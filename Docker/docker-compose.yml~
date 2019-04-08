@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+ redis-pop:
+  image: redis
+ nodeapp:
+  image: bargenson/forma-docker-nodeapp
+  environment:
+   - REDIS_HOST=redis-pop
+  depends_on:
+   - redis-pop
+ frontapp:
+   image: bargenson/forma-docker-frontend
+   depends_on:
+    - nodeapp
+   ports:
+    - "80:80"

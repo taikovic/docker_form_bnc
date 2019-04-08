@@ -1,0 +1,9 @@
+FROM ubuntu:latest
+
+ENV BUILD_FOLDER=/usr/src/FrontEnd
+WORKDIR ${BUILD_FOLDER}
+COPY ./toDeploy/gs-serving-web-content/target/*.jar  .
+RUN apt-get update && apt-get install -y openjdk-8-jdk
+
+CMD ["java -jar *.jar "]
+
